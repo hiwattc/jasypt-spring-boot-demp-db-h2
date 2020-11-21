@@ -1,0 +1,21 @@
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:}
+
+user2: uli
+defaultPassword2: ENC(jHrd0zN3anZD/QTc4Fmd0DCxA6itL64tIXbGorROetPOtfJ1UoTa0+eeUYR+g99d))
+# works with @EnableEncryptableProperties and StandardEncryptableEnvironment
+endpoint2: https://${user2}:${defaultPassword2}@localhost:30000
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  datasource:
+#    url: jdbc:h2:file:~/Downloads/test.db:testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    url: jdbc:h2:${resources-path}/testdb;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+    driver-class-name: org.h2.Driver
+    username: ULI
+    password: ENC(532amohGKp+ylPJFcambS9A4iU1lKVZVRJHqlblnjqaIVVKVJxwHudMMaj/auAZO)
